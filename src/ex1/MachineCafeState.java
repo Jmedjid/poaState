@@ -5,7 +5,7 @@ package ex1;
  */
 public interface MachineCafeState  {
 
-     MachineCafeState give (int n) throws MachineException;
+     MachineCafeState give (int somme) throws MachineException;
      MachineCafeState askCoffee() throws MachineException;
      MachineCafeState askTea() throws MachineException;
 

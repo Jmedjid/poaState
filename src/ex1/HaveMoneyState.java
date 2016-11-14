@@ -13,30 +13,19 @@ public class HaveMoneyState implements MachineCafeState{
 
 
     @Override
-    public MachineCafeState give(int n) {
+    public MachineCafeState give(int n) throws MachineException {
 
-        credit += n;
-        if (credit >=10)
-        {
-            return new HaveMoneyState(0);
-        }
-        else{
-            return  this;
-        }
+        throw new MachineException("Erreur");
     }
 
     @Override
     public MachineCafeState askCoffee() {
-        //throw new MachineException ("");
-       // return null;
-
         return new DoNotHaveMoneyState(0);
 
     }
 
     @Override
     public MachineCafeState askTea() {
-
         return new DoNotHaveMoneyState(0);
     }
 }

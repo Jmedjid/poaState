@@ -6,27 +6,32 @@ package ex1;
 public class DoNotHaveMoneyState implements MachineCafeState{
 
 
-    private int somme;
+    private int credit;
 
-    public DoNotHaveMoneyState(int somme) {
-        this.somme= somme;
+    public DoNotHaveMoneyState(int credit) {
+        super();
+        this.credit= credit;
     }
 
     @Override
     public MachineCafeState give(int n) {
-        this.somme += n;
-        return null;
+        credit += n;
+        if (credit >=10)
+        {
+            return new HaveMoneyState(0);
+        }
+        else{
+            return  this;
+        }
     }
 
     @Override
-    public MachineCafeState askCoffee() {
-        System.out.println("");
-        return new DoNotHaveMoneyState(0);
+    public MachineCafeState askCoffee() throws MachineException {
+        throw new MachineException("Erreur");
     }
 
     @Override
-    public MachineCafeState askTea() {
-        System.out.println("");
-        return new DoNotHaveMoneyState(0);
+    public MachineCafeState askTea() throws MachineException {
+        throw new MachineException("Erreur");
     }
 }
